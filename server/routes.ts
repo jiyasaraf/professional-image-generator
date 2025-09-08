@@ -24,6 +24,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   app.post("/api/transform-image", upload.single('image'), async (req: MulterRequest, res) => {
     try {
+      console.log('Received request:', {
+        hasFile: !!req.file,
+        contentType: req.get('Content-Type'),
+        body: Object.keys(req.body || {}),
+        files: req.file ? {
+          fieldname: req.file.fieldname,
+          originalname: req.file.originalname,
+          mimetype: req.file.mimetype,
+          size: req.file.size
+        } : 'No file'
+      });
+
       if (!req.file) {
         return res.status(400).json({ 
           success: false, 
