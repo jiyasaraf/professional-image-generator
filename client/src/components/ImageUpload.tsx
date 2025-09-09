@@ -33,10 +33,10 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
   }, [uploadedImage]);
 
   const validateFile = (file: File) => {
-    if (!file.type.match(/^image\/(jpeg|jpg|png)$/i)) {
+    if (!file.type.match(/^image\/(jpeg|jpg)$/i)) {
       toast({
         title: "Invalid file type",
-        description: "Please upload a JPEG, JPG or PNG file",
+        description: "Please upload a JPEG or JPG file",
         variant: "destructive",
       });
       return false;
@@ -99,7 +99,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
       <CardContent className="p-6">
         <h2 className="text-xl font-semibold text-foreground mb-4">Upload Your Headshot</h2>
         <p className="text-muted-foreground mb-6">
-          Upload a clear headshot photo (JPEG, JPG or PNG format) to transform it into a professional portrait.
+          Upload a clear headshot photo (JPEG or JPG format) to transform it into a professional portrait.
         </p>
 
         <div
@@ -117,7 +117,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
           <input
             ref={fileInputRef}
             type="file"
-            accept=".jpg,.jpeg,.png"
+            accept=".jpg,.jpeg"
             onChange={handleFileSelect}
             className="hidden"
             data-testid="file-input"
@@ -135,7 +135,7 @@ export const ImageUpload: React.FC<ImageUploadProps> = ({
                 or click to browse files
               </p>
               <p className="text-sm text-muted-foreground">
-                Supports JPEG, JPG and PNG files up to 10MB
+                Supports JPEG and JPG files up to 10MB
               </p>
             </div>
           ) : (
