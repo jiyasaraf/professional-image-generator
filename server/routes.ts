@@ -16,10 +16,10 @@ const upload = multer({
     file: Express.Multer.File,
     cb: multer.FileFilterCallback,
   ) => {
-    if (file.mimetype === "image/jpeg" || file.mimetype === "image/jpg") {
+    if (file.mimetype === "image/jpeg" || file.mimetype === "image/jpg" || file.mimetype === "image/png") {
       cb(null, true);
     } else {
-      cb(new Error("Only JPEG and JPG files are allowed"));
+      cb(new Error("Only JPEG, JPG and PNG files are allowed"));
     }
   },
 });
